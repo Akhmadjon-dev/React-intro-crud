@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Table extends Component {
     render() {
-        const { data, deleteHandler } = this.props;
+        const { data, deleteHandler, editHandler } = this.props;
         return (
             <div>
                 <h4>Table</h4>
@@ -34,7 +34,7 @@ class Table extends Component {
                                    </td>
                                    <td>
                                        <button onClick={() => deleteHandler(user.id)} >Del</button>
-                                       <button onClick={() => deleteHandler(user.id)} >Update</button>
+                                       <button onClick={() => editHandler(user.id)} >Update</button>
                                    </td>
                                </tr>
                            ))

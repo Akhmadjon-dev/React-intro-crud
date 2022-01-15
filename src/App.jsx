@@ -13,7 +13,9 @@ class App extends Component {
     this.state = {
       value: 0,
       isLoading: false,
-      users: []
+      users: [],
+      isFormEditable: false,
+      selectedUser : {},
     };
   }
   
@@ -35,14 +37,24 @@ class App extends Component {
     this.setState({users})
   }
 
+  editHandler = id => {
+    const user = this.state.users.find(item => item.id === id);
+    this.setState({isFormEditable: true, selectedUser: user});
+  }
+
+  updateUser = (user) => {
+    const updated = this.state.users.map(item => item.id === user.id ? user : item);
+    this.setState({users: updated, isEdit: false})
+  }
+
   render() {
      
-    const {  isLoading, value, users } = this.state;
+    const {  isLoading, value, users, isFormEditable, selectedUser } = this.state;
 
   
     if(isLoading) return <h1>Loading...</h1>
     
-    console.log(this.state)
+    // console.log(this.state)
     
     return (
      <Fragment>
@@ -50,10 +62,10 @@ class App extends Component {
 
          <Header data={value} />
           
-         {/* <Counter increment={this.incrementHandler} decrement={this.decrementHandler} sanjar={value} />           */}
+         {/* <Counter increment={this.incrementHandler} decrement={this.decrementHandler} sanjar={value} /> */}
 
-          <Form submitHandler={this.userAddHandler}/>
-          <Table deleteHandler={this.userDeleteHandler} data={users} />
+          <Form update={this.updateUser} user={selectedUser} isEdit={isFormEditable} submitHandler={this.userAddHandler}/>
+          <Table editHandler={this.editHandler} deleteHandler={this.userDeleteHandler} data={users} />
 
         </div>
      </Fragment>
