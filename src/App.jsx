@@ -20,6 +20,13 @@ class App extends Component {
   }
   
 
+  componentDidMount() {
+    fetch('https://fakestoreapi.com/users')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+
+  }
+
   incrementHandler = () => {
     this.setState({value: this.state.value + 1})
   }
