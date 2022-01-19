@@ -7,6 +7,7 @@ import Table from './components/Table';
 import users from './db/users';
 import Home from './components/Home';
 import About from './components/About';
+import User from './components/User';
 
 
 class App extends Component {
@@ -75,7 +76,8 @@ class App extends Component {
             <Route path="/" element={<Home />} />
             <Route path="/counter" element={<Counter />} />
             <Route path="/form" element={<Form update={this.updateUser} user={selectedUser} isEdit={isFormEditable} submitHandler={this.userAddHandler}/>} />
-            <Route path="/table" element={<Table editHandler={this.editHandler} deleteHandler={this.userDeleteHandler} data={users} />} />
+            <Route path="/users" element={<Table editHandler={this.editHandler} deleteHandler={this.userDeleteHandler} data={users} />} />
+            <Route path="/users/:id" element={<User/>} />
             <Route path="/about/*" element={<About />}/>
           </Routes>
 

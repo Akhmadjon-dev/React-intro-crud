@@ -11,8 +11,8 @@ class About extends Component {
                     <Link to="/about/about-2">About-2</Link>
                 </div>
                 <Routes>
-                    <Route path="about-1" element={<h3>About 1</h3>} />
-                    <Route path="about-2" element={<h3>About 2</h3>} />
+                    <Route path="/about-1" element={<h3>About 1</h3>} />
+                    <Route path="/about-2" element={<h3>About 2</h3>} />
                 </Routes>
             </div>
         );
