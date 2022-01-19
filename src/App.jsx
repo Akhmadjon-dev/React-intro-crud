@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react'
+import { Routes, Route } from "react-router-dom";
 import Counter from './components/Counter';
 import Header from './components/Header';
 import Form from './components/Form'
 import Table from './components/Table';
 import users from './db/users';
+import Home from './components/Home';
+import About from './components/About';
 
 
 class App extends Component {
@@ -68,11 +71,13 @@ class App extends Component {
        <div className='app'>
 
          <Header data={value} />
-          
-         {/* <Counter increment={this.incrementHandler} decrement={this.decrementHandler} sanjar={value} /> */}
-
-          <Form update={this.updateUser} user={selectedUser} isEdit={isFormEditable} submitHandler={this.userAddHandler}/>
-          <Table editHandler={this.editHandler} deleteHandler={this.userDeleteHandler} data={users} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/counter" element={<Counter />} />
+            <Route path="/form" element={<Form update={this.updateUser} user={selectedUser} isEdit={isFormEditable} submitHandler={this.userAddHandler}/>} />
+            <Route path="/table" element={<Table editHandler={this.editHandler} deleteHandler={this.userDeleteHandler} data={users} />} />
+            <Route path="/about/*" element={<About />}/>
+          </Routes>
 
         </div>
      </Fragment>
