@@ -13,7 +13,7 @@ import User from './components/User';
 class App extends Component {
 
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = {
       value: 0,
       isLoading: false,
